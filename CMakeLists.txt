@@ -15,7 +15,7 @@ include(ExternalProject)
 ##
 ## OPTIONS
 ##
-option(JSON_BuildTests "Build the unit tests when BUILD_TESTING is enabled." ON)
+
 option(JSON_Install "Install CMake targets during install step." ON)
 option(JSON_MultipleHeaders "Use non-amalgamated version of the library." OFF)
 
@@ -69,17 +69,6 @@ if (MSVC)
             $<INSTALL_INTERFACE:${NLOHMANN_NATVIS_FILE}>
             $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/${NLOHMANN_NATVIS_FILE}>
     )
-endif()
-
-##
-## TESTS
-## create and configure the unit test target
-##
-include(CTest) #adds option BUILD_TESTING (default ON)
-
-if(BUILD_TESTING AND JSON_BuildTests)
-    enable_testing()
-    add_subdirectory(test)
 endif()
 
 ##
